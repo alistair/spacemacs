@@ -36,22 +36,12 @@
                    '(omnisharp-go-to-definition :async t)))
     :config
     (progn
-      (spacemacs/declare-prefix-for-mode 'csharp-mode "mc" "csharp/compile")
-      (spacemacs/declare-prefix-for-mode 'csharp-mode "mf" "csharp/file")
       (spacemacs/declare-prefix-for-mode 'csharp-mode "mg" "csharp/navigation")
       (spacemacs/declare-prefix-for-mode 'csharp-mode "mh" "csharp/documentation")
       (spacemacs/declare-prefix-for-mode 'csharp-mode "mr" "csharp/refactoring")
       (spacemacs/declare-prefix-for-mode 'csharp-mode "ms" "csharp/server")
       (spacemacs/declare-prefix-for-mode 'csharp-mode "mt" "csharp/tests")
       (spacemacs/set-leader-keys-for-major-mode 'csharp-mode
-        ;; Compile
-        "cc" 'omnisharp-build-in-emacs ;; Only one compile command so use top-level
-        ;; Solution/project manipulation
-        "fa" 'omnisharp-add-to-solution-current-file
-        "fA" 'omnisharp-add-to-solution-dired-selected-files
-        "fr" 'omnisharp-remove-from-project-current-file
-        "fR" 'omnisharp-remove-from-project-dired-selected-files
-        "pl" 'omnisharp-add-reference
         ;; Navigation
         "gG"   'omnisharp-go-to-definition-other-window
         "gu"   'omnisharp-helm-find-usages
@@ -70,20 +60,18 @@
         "hT" 'omnisharp-current-type-information-to-kill-ring
         ;; Refactoring
         "rm" 'omnisharp-rename
-        "rM" 'omnisharp-rename-interactively
         "rr" 'omnisharp-run-code-action-refactoring
         ;; Server manipulation, inspired spacemacs REPL bindings since C# does not provice a REPL
         "ss" 'omnisharp-start-omnisharp-server
         "sS" 'omnisharp-stop-server
         "sr" 'omnisharp-reload-solution
         ;; Tests
-        "ta" 'omnisharp-unit-test-all
-        "tb" 'omnisharp-unit-test-fixture
-        "tt" 'omnisharp-unit-test-single
+        ;; Run tests within buffer
+        "tf" 'omnisharp-unit-test-buffer
         ;; Code manipulation
         "u" 'omnisharp-auto-complete-overrides
         "i" 'omnisharp-fix-usings
-        "=" 'omnisharp-code-format))))
+        "=" 'omnisharp-code-format-entire-file))))
 
 (defun csharp/post-init-company ()
   (spacemacs|add-company-hook csharp-mode))
