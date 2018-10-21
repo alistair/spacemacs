@@ -67,9 +67,9 @@
         "sr" 'omnisharp-reload-solution
         ;; Tests
         ;; Run tests within buffer
-        "tf" 'omnisharp-unit-test-buffer
+        "tb" 'omnisharp-unit-test-buffer
         ;; Code manipulation
-        "u" 'omnisharp-auto-complete-overrides
+        "u" 'omnisharp-auto-complete
         "i" 'omnisharp-fix-usings
         "=" 'omnisharp-code-format-entire-file))))
 
